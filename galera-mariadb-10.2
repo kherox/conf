@@ -1,0 +1,23 @@
+[galera]
+# Mandatory settings
+wsrep_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+wsrep_node_name=mdb021
+wsrep_node_address=192.168.8.160
+wsrep_cluster_name='galera_cluster'
+wsrep_cluster_address="gcomm://192.168.8.160,192.168.8.161,192.168.8.162"
+binlog_format=row
+default_storage_engine=InnoDB
+innodb_autoinc_lock_mode=2
+
+wsrep_sst_method=mariabackup
+wsrep_sst_auth = root:password
+wsrep_sst_donor = mdb023,
+#
+# Allow server to accept connections on all interfaces.
+#
+bind-address=0.0.0.0
+#
+# Optional setting
+wsrep_slave_threads=4
+innodb_flush_log_at_trx_commit=0
