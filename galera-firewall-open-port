@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "Add mysql service to firewall"
+firewall-cmd --zone=public --add-service=mysql --permanent
+
+echo "Open 3306 TCP port to firewall"
+
+firewall-cmd --zone=public --add-port=3306/tcp --permanent
+
+echo "Open 4567 TCP port to firewall"
+
+firewall-cmd --zone=public --add-port=4567/tcp --permanent
+
+echo "Open 4568 TCP port to firewall"
+
+firewall-cmd --zone=public --add-port=4568/tcp --permanent
+
+echo "Open 4444 TCP port to firewall"
+
+firewall-cmd --zone=public --add-port=4444/tcp --permanent
+
+# en cas de replication multicast
+echo "Open 4567 on UDP port to firewall"
+
+firewall-cmd --zone=public --add-port=4567/udp --permanent
+
+echo "Reload firewall config"
+
+firewall-cmd --reload
