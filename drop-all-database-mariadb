@@ -1,0 +1,3 @@
+credit : https://stackoverflow.com/questions/22301635/drop-all-databases-in-mysql
+
+mysql -uroot -p<password> -e "show databases" | grep -v Database | grep -v mysql| grep -v information_schema| gawk '{print "drop database `" $1 "`;select sleep(0.1);"}' | mysql -uroot -p<password>
